@@ -1,0 +1,19 @@
+.task-list{
+    list-style: none;
+}
+.task-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.task-list li .icon{
+    font-size: 3rem;
+}
+.task-list li .icon-checked{
+    color: darkseagreen;
+}
+.task-list li .text-done{
+    text-decoration: line-through;
+}
