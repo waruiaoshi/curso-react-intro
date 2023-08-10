@@ -1,3 +1,15 @@
+:root {
+  --primary-color: rgb(0, 143, 156);
+  --secondary-color: rgb(247, 144, 49);
+  --field-text-color: rgb(62, 63, 94);
+  --bg-color: rgb(255,255,255);
+  --heading-color: rgb(255,255,255);
+  --text-color: rgb(48, 47, 69);
+  --label-color: rgb(175, 176, 192);
+  --border-color: rgb(222, 222, 234);
+  --font1: Roboto, sans-serif;
+  --font2: Montserrat, sans-serif; 
+}
 .App {
   text-align: center;
 }
@@ -27,6 +39,19 @@
 .App-link {
   color: #97ca3f;
 }
+
+.wrapper{
+  width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin: 3rem auto;
+    border-radius: 12px;
+    background-color: var(--bg-color);
+    box-shadow: 0px 0px 60px 0px rgba(94, 92, 154, 0.12);
+}
+
 
 @keyframes App-logo-spin {
   from {
