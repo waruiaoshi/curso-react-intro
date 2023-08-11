@@ -16,28 +16,48 @@ import React from 'react';
 //   { text: 'Trabajar con reactstates', completed: true },
 // ];
 
-function App() {
 
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
+function useLocalStorage(itemName, initialValue) {
 
-  let parsedTodos;
 
-  if (!localStorageTodos) {
-    parsedTodos = [];
-    localStorage.setItem('TODOS_V1', JSON.stringify(parsedTodos));
+  const localStorageItem = localStorage.getItem(itemName);
+
+  let parsedItem;
+
+  if (!localStorageItem) {
+    parsedItem = initialValue;
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
 
   } else {
-    parsedTodos = JSON.parse(localStorageTodos);
+    parsedItem = JSON.parse(localStorageItem);
   }
 
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return [item, saveItem];
+
+}
+
+
+
+
+function App() {
+
+
+
   //agrego estados
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSerachValue] = React.useState('');
   //console.log(`Los usuarios buscan ${searchValue}`);
 
 
   // contabilizo los totales de las tareas y las completadas
-  const totalTodos = parsedTodos.length;
+  const totalTodos = todos.length;
   const completedTodos = todos.filter(todo => !!todo.completed).length;
 
   //Estados deribados para la búsqueda
@@ -47,11 +67,7 @@ function App() {
 
 
   //función para guardar TODOs
-  const saveTodos = (newTodos) => {
 
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-    setTodos(newTodos);
-  };
 
 
 
