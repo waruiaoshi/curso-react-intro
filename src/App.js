@@ -16,7 +16,7 @@ import React from 'react';
 //   { text: 'Trabajar con reactstates', completed: true },
 // ];
 
-
+// custom hook, recibe el nombre del item donde guararemos localstorage y el valor inicial
 function useLocalStorage(itemName, initialValue) {
 
 
@@ -34,11 +34,13 @@ function useLocalStorage(itemName, initialValue) {
 
   const [item, setItem] = React.useState(parsedItem);
 
+  //función para guardar Items
   const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
     setItem(newItem);
   };
 
+  //retorna el estado "item" y la función para actualizarlo y guardar en localstorage
   return [item, saveItem];
 
 }
@@ -48,8 +50,6 @@ function useLocalStorage(itemName, initialValue) {
 
 function App() {
 
-
-
   //agrego estados
   const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSerachValue] = React.useState('');
@@ -58,7 +58,9 @@ function App() {
 
   // contabilizo los totales de las tareas y las completadas
   const totalTodos = todos.length;
+  // "!!" convierte en boleano el resultado
   const completedTodos = todos.filter(todo => !!todo.completed).length;
+
 
   //Estados deribados para la búsqueda
   const searchedTodos = todos.filter(searched => (searched.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())));
@@ -66,7 +68,7 @@ function App() {
   //console.log(searchedTodos);
 
 
-  //función para guardar TODOs
+
 
 
 
@@ -81,20 +83,6 @@ function App() {
     newTodos[todoIndex].completed = true;
     saveTodos(newTodos);
   };
-
-  //función para eliminar las tareas
-  // const deleteTodo = (text) => {
-
-  //   const newTodos = [...todos];
-
-  //   const todoIndex = newTodos.findIndex(
-  //     (todo) => todo.text == text
-  //   );
-  //   newTodos.splice(todoIndex, 1);
-
-  //   console.log(newTodos);
-  //   setTodos(newTodos);
-  // };
 
 
   const deleteTodo = (text) => {
