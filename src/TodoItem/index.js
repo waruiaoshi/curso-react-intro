@@ -1,6 +1,6 @@
-import './check.svg'
-import { CheckIcon } from "./CheckIcon.js";
-import { DeleteIcon } from "./DeleteIcon.js";
+import '../TodoIcon/check.svg'
+import { CheckIcon } from "../TodoIcon/CheckIcon.js";
+import { DeleteIcon } from "../TodoIcon/DeleteIcon.js";
 
 
 function TodoItem(props) {

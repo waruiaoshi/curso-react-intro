@@ -1,5 +1,5 @@
 import React from "react";
-import { TodoIcon } from "./TodoIcon.js"
+import { TodoIcon } from "./index.js"
 
 function DeleteIcon(props) {
     return (

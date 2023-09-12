@@ -1,10 +1,10 @@
 import logo from './platzi.webp';
 import './App.css';
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-import { CreateTodoButton } from "./CreateTodoButton";
+import { TodoCounter } from './TodoCounter/index.js';
+import { TodoSearch } from "./TodoSearch/index.js";
+import { TodoList } from "./TodoList/index.js";
+import { TodoItem } from "./TodoItem/index.js";
+import { CreateTodoButton } from "./CreateTodoButton/index.js";
 import React from 'react';
 
 
